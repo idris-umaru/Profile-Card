@@ -1,0 +1,487 @@
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu,
+    Cantarell, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+/* ============================================================================
+   TYPOGRAPHY & COLOR SYSTEM
+   ============================================================================ */
+
+/* High contrast text for WCAG AA compliance */
+:root {
+  --color-primary: #667eea;
+  --color-primary-dark: #5a67d8;
+  --color-secondary: #764ba2;
+  --color-bg-light: #ffffff;
+  --color-bg-subtle: #f7fafc;
+  --color-text-primary: #1a202c;
+  --color-text-secondary: #4a5568;
+  --color-text-muted: #718096;
+  --color-border: #e2e8f0;
+  --color-focus: #3182ce;
+  --color-link: #2d3748;
+  --color-link-hover: #667eea;
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 3rem;
+  --border-radius: 12px;
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s ease;
+}
+
+h1,
+h2,
+h3 {
+  color: var(--color-text-primary);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+p {
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+
+/* Screen reader only class */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* ============================================================================
+   APP CONTAINER
+   ============================================================================ */
+
+.app-container {
+  width: 100%;
+  max-width: 500px;
+}
+
+/* ============================================================================
+   PROFILE CARD - MAIN LAYOUT
+   ============================================================================ */
+
+.profile-card {
+  background: var(--color-bg-light);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-lg);
+  padding: var(--spacing-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  transition: var(--transition);
+}
+
+.profile-card:focus-within {
+  box-shadow: 0 15px 25px rgba(102, 126, 234, 0.3);
+}
+
+/* ============================================================================
+   HEADER & NAME
+   ============================================================================ */
+
+.profile-header {
+  text-align: center;
+  padding-bottom: var(--spacing-sm);
+}
+
+.profile-name {
+  font-size: 2rem;
+  color: var(--color-text-primary);
+  margin: 0;
+  word-break: break-word;
+}
+
+/* ============================================================================
+   AVATAR
+   ============================================================================ */
+
+.profile-avatar-wrapper {
+  display: flex;
+  justify-content: center;
+  margin: 0;
+}
+
+.profile-avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid var(--color-primary);
+  box-shadow: var(--shadow-md);
+  transition: var(--transition);
+}
+
+.profile-avatar:hover,
+.profile-avatar:focus-visible {
+  transform: scale(1.05);
+  border-color: var(--color-secondary);
+}
+
+/* ============================================================================
+   TIME DISPLAY
+   ============================================================================ */
+
+.profile-time-wrapper {
+  background: var(--color-bg-subtle);
+  padding: var(--spacing-md);
+  border-radius: var(--border-radius);
+  border: 1px solid var(--color-border);
+  text-align: center;
+}
+
+.profile-time-label {
+  display: block;
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  font-weight: 500;
+  margin-bottom: var(--spacing-xs);
+}
+
+.profile-time {
+  display: block;
+  font-size: 1.125rem;
+  font-family: "Monaco", "Courier New", monospace;
+  color: var(--color-text-primary);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* ============================================================================
+   BIOGRAPHY SECTION
+   ============================================================================ */
+
+.profile-bio-section {
+  padding: var(--spacing-sm) 0;
+}
+
+.profile-bio {
+  font-size: 1rem;
+  color: var(--color-text-secondary);
+  line-height: 1.8;
+  margin: 0;
+  word-wrap: break-word;
+}
+
+/* ============================================================================
+   SOCIAL LINKS NAV
+   ============================================================================ */
+
+.profile-social-nav {
+  padding: var(--spacing-md) 0;
+  border-top: 2px solid var(--color-border);
+  border-bottom: 2px solid var(--color-border);
+  margin-bottom: var(--spacing-md);
+}
+
+.profile-social-links {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+  gap: var(--spacing-sm);
+  margin: 0;
+  padding: 0;
+}
+
+.social-link-item {
+  display: flex;
+}
+
+.social-link {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-sm);
+  background: linear-gradient(
+    135deg,
+    var(--color-primary),
+    var(--color-secondary)
+  );
+  color: white;
+  text-decoration: none;
+  border-radius: var(--border-radius);
+  font-weight: 600;
+  font-size: 0.875rem;
+  transition: var(--transition);
+  border: 2px solid transparent;
+  cursor: pointer;
+}
+
+.social-link:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.social-link:focus-visible,
+a:focus-visible {
+  outline: none;
+  border-color: var(--color-focus);
+  box-shadow: 0 0 0 3px rgba(49, 130, 206, 0.3);
+}
+
+.social-link:active {
+  transform: translateY(0);
+}
+
+/* ============================================================================
+   HOBBIES & DISLIKES SECTIONS
+   ============================================================================ */
+
+.profile-hobbies-section,
+.profile-dislikes-section {
+  padding-top: var(--spacing-md);
+}
+
+.section-title {
+  font-size: 1.25rem;
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-md);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+.profile-hobbies,
+.profile-dislikes {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: var(--spacing-sm);
+  margin: 0;
+  padding: 0;
+}
+
+.hobby-item,
+.dislike-item {
+  background: var(--color-bg-subtle);
+  padding: var(--spacing-sm);
+  border-radius: var(--border-radius);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-secondary);
+  font-size: 0.95rem;
+  word-wrap: break-word;
+  transition: var(--transition);
+}
+
+.hobby-item:hover,
+.dislike-item:hover {
+  border-color: var(--color-primary);
+  background: rgba(102, 126, 234, 0.05);
+}
+
+/* ============================================================================
+   RESPONSIVE DESIGN
+   ============================================================================ */
+
+/* Tablet (768px and up) */
+@media (min-width: 768px) {
+  .profile-card {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    grid-template-rows: auto auto auto auto auto auto;
+    gap: var(--spacing-lg);
+    padding: var(--spacing-xl);
+  }
+
+  .profile-header {
+    grid-column: 2;
+    grid-row: 1;
+    text-align: left;
+    padding: 0;
+  }
+
+  .profile-name {
+    font-size: 2.25rem;
+  }
+
+  .profile-avatar-wrapper {
+    grid-column: 1;
+    grid-row: 1 / 4;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+
+  .profile-avatar {
+    width: 140px;
+    height: 140px;
+  }
+
+  .profile-time-wrapper {
+    grid-column: 2;
+    grid-row: 2;
+  }
+
+  .profile-bio-section {
+    grid-column: 2;
+    grid-row: 3;
+    padding: 0;
+  }
+
+  .profile-social-nav {
+    grid-column: 2;
+    grid-row: 4;
+  }
+
+  .profile-hobbies-section {
+    grid-column: 2;
+    grid-row: 5;
+    border-top: 2px solid var(--color-border);
+  }
+
+  .profile-dislikes-section {
+    grid-column: 2;
+    grid-row: 6;
+    border-top: 2px solid var(--color-border);
+  }
+
+  .profile-hobbies,
+  .profile-dislikes {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  }
+}
+
+/* Large screens (1024px and up) */
+@media (min-width: 1024px) {
+  .app-container {
+    max-width: 600px;
+  }
+
+  .profile-name {
+    font-size: 2.5rem;
+  }
+
+  .profile-card {
+    padding: var(--spacing-xl) calc(var(--spacing-xl) * 1.5);
+  }
+}
+
+/* ============================================================================
+   PRINT STYLES
+   ============================================================================ */
+
+@media print {
+  body {
+    background: white;
+  }
+
+  .profile-card {
+    box-shadow: none;
+    border: 1px solid var(--color-border);
+  }
+
+  .social-link {
+    color: var(--color-link);
+    text-decoration: underline;
+  }
+}
+
+/* ============================================================================
+   HIGH CONTRAST MODE (ACCESSIBILITY)
+   ============================================================================ */
+
+@media (prefers-contrast: more) {
+  .social-link {
+    border-width: 2px;
+    border-color: currentColor;
+  }
+
+  .hobby-item,
+  .dislike-item {
+    border-width: 2px;
+  }
+}
+
+/* ============================================================================
+   REDUCED MOTION (ACCESSIBILITY)
+   ============================================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* ============================================================================
+   DARK MODE SUPPORT (OPTIONAL)
+   ============================================================================ */
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+  }
+
+  .profile-card {
+    background: #2d3748;
+    color: #e2e8f0;
+  }
+
+  .profile-name {
+    color: #f7fafc;
+  }
+
+  .profile-bio {
+    color: #cbd5e0;
+  }
+
+  .profile-time-wrapper {
+    background: #1a202c;
+    border-color: #4a5568;
+  }
+
+  .profile-time {
+    color: #f7fafc;
+  }
+
+  .section-title {
+    color: #f7fafc;
+  }
+
+  .hobby-item,
+  .dislike-item {
+    background: #1a202c;
+    border-color: #4a5568;
+    color: #cbd5e0;
+  }
+
+  .hobby-item:hover,
+  .dislike-item:hover {
+    background: rgba(102, 126, 234, 0.15);
+  }
+}

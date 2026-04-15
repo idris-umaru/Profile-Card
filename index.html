@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profile Card - Testable Component</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="app-container">
+      <article class="profile-card" data-testid="test-profile-card">
+        <!-- Header with name -->
+        <header class="profile-header">
+          <h1 class="profile-name" data-testid="test-user-name">idris Umaru</h1>
+        </header>
+
+        <!-- Avatar section -->
+        <figure
+          class="profile-avatar-wrapper"
+          data-testid="test-user-avatar-figure"
+        >
+          <img
+            src="idris.jpg"
+            alt="photo of idris"
+            class="profile-avatar"
+            data-testid="test-user-avatar"
+            loading="lazy"
+          />
+          <figcaption class="sr-only">photo of idris</figcaption>
+        </figure>
+
+        
+        <div class="profile-time-wrapper">
+          <span class="profile-time-label">Current time (ms):</span>
+          <time
+            class="profile-time"
+            data-testid="test-user-time"
+            aria-live="polite"
+            aria-label="Current epoch time in milliseconds"
+            >1713139200000</time
+          >
+        </div>
+
+       
+        <section class="profile-bio-section">
+          <p class="profile-bio" data-testid="test-user-bio">
+            Frontend developer with a passion for building accessible and
+            performant web applications. Coffee enthusiast and open source
+            contributor. Always learning, always coding.
+          </p>
+        </section>
+
+        <nav class="profile-social-nav" aria-label="Social media links">
+          <ul class="profile-social-links" data-testid="test-user-social-links">
+            <li class="social-link-item">
+              <a
+                href="https://github.com/idris-umaru"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="social-link"
+                data-testid="test-user-social-github"
+                aria-label="Visit GitHub profile (opens in new tab)"
+              >
+                GitHub
+              </a>
+            </li>
+            <li class="social-link-item">
+              <a
+                href="https://x.com/Ttech001"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="social-link"
+                data-testid="test-user-social-x"
+                aria-label="Visit X profile (opens in new tab)"
+              >
+                X
+              </a>
+            </li>
+          </ul>
+        </nav>
+
+        
+        <section class="profile-hobbies-section">
+          <h2 class="section-title">Hobbies</h2>
+          <ul class="profile-hobbies" data-testid="test-user-hobbies">
+            <li class="hobby-item">Gaming</li>
+            <li class="hobby-item">Reading</li>
+            <li class="hobby-item">Playing Guitar</li>
+            <li class="hobby-item">Rock Climbing</li>
+            <li class="hobby-item">Traveling</li>
+            <li class="hobby-item">coding</li>
+          </ul>
+        </section>
+
+       
+        <section class="profile-dislikes-section">
+          <h2 class="section-title">Dislikes</h2>
+          <ul class="profile-dislikes" data-testid="test-user-dislikes">
+            <li class="dislike-item"> Slow internet</li>
+            <li class="dislike-item"> Poor documentation</li>
+            <li class="dislike-item">Unnecessary meetings</li>
+            <li class="dislike-item"> Broken links</li>
+          </ul>
+        </section>
+      </article>
+    </main>
+
+    <script src="card.js"></script>
+  </body>
+</html>

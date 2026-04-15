@@ -55,10 +55,10 @@ For a more realistic development experience, you can serve the files using a loc
 
 ```bash
 # Python 3
-python -m http.server 8000
+python -m http.server 5500
 
 # Python 2
-python -m SimpleHTTPServer 8000
+python -m SimpleHTTPServer 5500
 ```
 
 #### Option 2: Node.js (if installed)
@@ -70,10 +70,9 @@ npx serve .
 #### Option 3: PHP (if installed)
 
 ```bash
-php -S localhost:8000
+php -S localhost:5500
 ```
 
-Then open `http://localhost:8000` in your browser.
+Then open `http://localhost:5500` in your browser.
 
 
-#
